@@ -11,3 +11,9 @@ def genres(request):
     genres = Genre.objects.all()
     context = {"genres":genres}
     return render(request,'book_library/genres.html',context )
+
+def genre(request,genre_id):
+    genre = Genre.objects.get(pk=genre_id)
+    books=genre.book_set.order_by('-date_added')
+    context = {"genre":genre,'books':books}
+    return render(request, "book_library/genre.html",context)
