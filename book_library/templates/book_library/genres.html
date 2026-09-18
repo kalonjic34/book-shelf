@@ -6,7 +6,7 @@
     <ul>
         {% for genre in genres %}
             <li>
-                {{ genre.name }}
+                <a href="{% url "book_library:genre" genre.id %}">{{ genre.name }}</a>
             </li>
             {%empty%}
                 <p>No genres have been added</p>
