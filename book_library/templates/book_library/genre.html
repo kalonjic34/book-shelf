@@ -1,0 +1,18 @@
+{% extends "book_library/base.html" %}
+
+{% block content %}
+    {{genre.name}}
+
+    <ul>
+    {% for book in books %}
+        <li>
+            {{ book.title }}
+            <p>{{ book.date_added|date:"M d, Y H:i" }}</p>
+                <p>{{ book.description |linebreaks}}</p>
+            
+        </li>
+        {%empty%}
+        <p>No books found</p>
+    {% endfor %}
+    </ul>
+{% endblock content %}
