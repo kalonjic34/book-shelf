@@ -10,6 +10,13 @@
     <p>Welcome to BookShelf</p>
 
     <p>Keep track of your books!</p>
+    {% block content %}
+
+    {% for book in books %}
+    <p>{{ book.title }}</p>
+
+    {% endfor %}
+    {% endblock content %}
 </body>
 
 </html>
