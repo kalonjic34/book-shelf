@@ -1,0 +1,15 @@
+{% extends "book_library/base.html" %}
+
+{% block content %}
+    <p>Genres:</p>
+
+    <ul>
+        {% for genre in genres %}
+            <li>
+                {{ genre.name }}
+            </li>
+            {%empty%}
+                <p>No genres have been added</p>
+        {% endfor %}
+    </ul>
+{% endblock content %}
