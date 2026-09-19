@@ -1,0 +1,12 @@
+{% extends "book_library/base.html" %}
+
+{% block content %}
+    <p>Add a new genre:</p>
+
+    <form action="{% url "book_library:new_genre" %}"method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button name='submit'>Add Genre</button>
+
+    </form>
+{% endblock content %}

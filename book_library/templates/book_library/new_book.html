@@ -1,0 +1,15 @@
+{% extends "book_library/base.html" %}
+
+{% block content %}
+<a href="{% url "book_library:genre" genre.id%}">
+    {{ genre }}
+</a>
+    <p>Add a new book:</p>
+
+    <form action="{% url "book_library:new_book" genre.id%}"method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button name='submit'>Add Book</button>
+
+    </form>
+{% endblock content %}
