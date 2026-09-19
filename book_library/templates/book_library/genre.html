@@ -1,7 +1,8 @@
 {% extends "book_library/base.html" %}
 
 {% block content %}
-    {{genre.name}}
+    <p>Genre: {{genre.name}}</p>
+    <a href="{% url "book_library:new_book" genre.id%}">Add a new book</a>
 
     <ul>
     {% for book in books %}
