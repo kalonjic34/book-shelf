@@ -47,3 +47,20 @@ def new_book(request,genre_id):
         "form":form
     }
     return render(request, "book_library/new_book.html",context)
+def edit_book(request,book_id):
+    book = Book.objects.get(id=book_id)
+    genre= book.genre
+    
+    if request.method != "POST":
+        form=BookForm(instance=book)
+    else:
+        form=BookForm(instance=book,data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("book_library:genre",genre_id=genre.id)
+    context={
+        "book":book,
+        "genre":genre,
+        "form":form
+    }
+    return render(request, "book_library/edit_book.html",context) 
