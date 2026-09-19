@@ -5,9 +5,21 @@
 
     Welcome, {{ user.username }}
     {% else %}
+    <a href="{% url "accounts:register" %}">Register</a>
     <a href="{% url "accounts:login" %}">Sign in</a>
 {% endif %}
 </p>
 
 {% block content %}
 {% endblock  %}
+
+{% if user.is_authenticated %}
+<hr>
+<form action="{% url "accounts:logout" %}"method="post">
+    {% csrf_token %}
+    <button>Log out</button>
+</form>
+
+{% endif %}
+
+
