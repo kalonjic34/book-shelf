@@ -128,3 +128,4 @@ MAILERS = {
     },
 }
 LOGIN_REDIRECT_URL='book_library:index'
+LOGOUT_REDIRECT_URL='book_library:index'
