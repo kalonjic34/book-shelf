@@ -11,6 +11,7 @@
             {{ book.title }}
                 <p>{{ book.description |linebreaks}}</p>
                 <a href="{% url "book_library:edit_book" book.id %}"><p>Update book</p></a>            
+                <a href="{% url "book_library:delete_book" book.id %}"><p>Delete book</p></a>            
         </li>
         {%empty%}
         <p>This genre has no books yet.</p>
