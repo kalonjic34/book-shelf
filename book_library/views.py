@@ -79,3 +79,15 @@ def edit_book(request,book_id):
         "form":form
     }
     return render(request, "book_library/edit_book.html",context) 
+
+def delete_book(request, book_id):
+    book = Book.objects.get(id=book_id)
+    genre = book.genre
+    if genre.owner !=request.user:
+        raise Http404
+    if request.method == "POST":
+        book.delete()
+        return redirect("book_library:genre",genre_id=genre.id)
+    elif request.method =="GET":
+        context ={"genre":genre, "book":book}
+        return render(request, "book_library/delete_book.html",context)
