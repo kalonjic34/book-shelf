@@ -1,6 +1,17 @@
 {% extends "book_library/base.html" %}
 
 {% block content %}
-    <p>Build your personal library, organize your collection, and keep track of your reading progress and habits.</p>
+    <div class="intro-panel">
+        <p class="eyebrow mb-3">A quieter way to keep track</p>
+        <h1 class="page-title mb-4">Your books,<br>in one place.</h1>
+        <p class="lead col-lg-7 mb-4">
+            Build your personal library, organize your collection, and keep track of your reading habits.
+        </p>
+        {% if user.is_authenticated %}
+            <a class="btn btn-primary btn-lg" href="{% url "book_library:genres" %}">Browse your genres</a>
+        {% else %}
+            <a class="btn btn-primary btn-lg" href="{% url "accounts:register" %}">Start your shelf</a>
+        {% endif %}
+    </div>
 {% endblock content %}
 
