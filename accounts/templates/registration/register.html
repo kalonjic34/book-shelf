@@ -1,9 +1,12 @@
 {% extends "book_library/base.html" %}
 {% block content %}
-    <form action="{% url "accounts:register" %}" method="post">
-        {% csrf_token %}
-        {{ form.as_div }}
-        <button name='submit'>Register</button>
-
-    </form>
+    <div class="form-panel">
+        <p class="eyebrow mb-2">Make it yours</p>
+        <h1 class="h2 mb-4">Create your account</h1>
+        <form action="{% url "accounts:register" %}" method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <button class="btn btn-primary mt-3" name="submit">Create account</button>
+        </form>
+    </div>
 {% endblock content %}
