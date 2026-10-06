@@ -1,20 +1,25 @@
 {% extends "book_library/base.html" %}
 
 {% block content %}
-    <p>Browsing: {{genre.name}}</p>
-    <a href="{% url "book_library:new_book" genre.id%}">Add a book</a>
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+        <div>
+            <p class="eyebrow mb-2">Shelf</p>
+            <h1 class="display-5 mb-0">{{ genre.name }}</h1>
+        </div>
+        <a class="btn btn-primary" href="{% url "book_library:new_book" genre.id%}">Add a book</a>
+    </div>
 
-    <ul>
+    <div>
     {% for book in books %}
-        <li>
-            <p>{{ book.date_added|date:"M d, Y H:i" }}</p>
-            {{ book.title }}
-                <p>{{ book.description |linebreaks}}</p>
-                <a href="{% url "book_library:edit_book" book.id %}"><p>Update book</p></a>            
-                <a href="{% url "book_library:delete_book" book.id %}"><p>Delete book</p></a>            
-        </li>
+        <article class="book-card">
+            <p class="book-date mb-2">Added {{ book.date_added|date:"M d, Y H:i" }}</p>
+            <h2 class="h4">{{ book.title }}</h2>
+            <div class="mb-3">{{ book.description|linebreaks }}</div>
+            <a class="btn btn-sm btn-outline-secondary me-2" href="{% url "book_library:edit_book" book.id %}">Update</a>
+            <a class="btn btn-sm btn-outline-danger" href="{% url "book_library:delete_book" book.id %}">Delete</a>
+        </article>
         {%empty%}
-        <p>This genre has no books yet.</p>
+        <div class="form-panel text-secondary">This genre has no books yet.</div>
     {% endfor %}
-    </ul>
+    </div>
 {% endblock content %}
