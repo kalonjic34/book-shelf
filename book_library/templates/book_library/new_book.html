@@ -1,15 +1,14 @@
 {% extends "book_library/base.html" %}
 
 {% block content %}
-<a href="{% url "book_library:genre" genre.id%}">
-    {{ genre }}
-</a>
-    <p>Add a new book:</p>
-
-    <form action="{% url "book_library:new_book" genre.id%}"method="post">
-        {% csrf_token %}
-        {{ form.as_div }}
-        <button name='submit'>Add Book</button>
-
-    </form>
+    <div class="form-panel">
+        <a class="text-decoration-none" href="{% url "book_library:genre" genre.id%}">&larr; Back to {{ genre }}</a>
+        <p class="eyebrow mt-4 mb-2">Add to your shelf</p>
+        <h1 class="h2 mb-4">New book</h1>
+        <form action="{% url "book_library:new_book" genre.id%}" method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <button class="btn btn-primary mt-3" name="submit">Add book</button>
+        </form>
+    </div>
 {% endblock content %}
